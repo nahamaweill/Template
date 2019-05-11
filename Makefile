@@ -13,4 +13,4 @@ test:  Test.o
 	clang++-5.0 -std=c++17 --compile $< -o $@
 
 clean:
-    rm -f *.o demo test
+	rm -f *.o demo test
