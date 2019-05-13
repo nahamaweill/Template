@@ -24,7 +24,7 @@ namespace itertools
             T data;
 
             public:
-            iterator(T ptr = NULL) : data(ptr) {
+            iterator(T ptr) : data(ptr) {
 
             }
 
