@@ -90,6 +90,5 @@ namespace itertools
         { 
             return iterator<decltype(_start.begin())>(_start.end(), _start.end());
         } 
-
     };
 }
