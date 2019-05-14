@@ -1,44 +1,73 @@
 #pragma once
+
 namespace itertools
 {
     template <typename T1, typename T2>
+
+    /*
+    This class represents A chaun of two containers-like.
+    */
     class chain 
     {
         private:
-        T1 _it1;
-        T2 _it2;
+        T1 _it1; //For the start.
+        T2 _it2; //For the end.
         
         public:
-        chain(T1 _start, T2 _end) : _it1(_start), _it2(_end) {
+        /*
+        A copy constructor.
+        */
+        chain(T1 _start, T2 _end) : _it1(_start), _it2(_end)
+        {
 
         }
 
         template <typename P1, typename P2>
+
+        /*
+        This class represents a iterator.
+        */
         class iterator
         {
           private:
-            P1 data1;
-            P2 data2;
+            P1 data1; //Pointer to the data of the first range.
+            P2 data2; //Pointer to the data of the second range.
 
             public:
-            iterator(P1 ptr1, P2 ptr2) : data1(ptr1), data2(ptr2) {
+            /*
+            A copy constructor.
+            */
+            iterator(P1 ptr1, P2 ptr2) : data1(ptr1), data2(ptr2)
+            {
 
             }
 
-            decltype(*data1) operator*() const {
+            decltype(*data1) operator*() const
+            {
 			    return *data1;
             }
 
-            iterator& operator++() {
-
+            /*
+            For operator ++:
+            */
+            iterator& operator++()
+            {
 			    return *this;
             }
 
-		    bool operator==(iterator<P1,P2> it) const {
+            /*
+            For operator ==:
+            */
+		    bool operator==(iterator<P1,P2> it) const
+            {
 			    return false;
 		    }
 
-		    bool operator!=(iterator<P1,P2> it) const {
+            /*
+            For operator !=:
+            */
+		    bool operator!=(iterator<P1,P2> it) const
+            {
 			    return false;
             }
         };

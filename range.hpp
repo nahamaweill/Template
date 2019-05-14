@@ -1,60 +1,102 @@
 #pragma once
+
 namespace itertools
 {
+
     template <typename T>
+    
+    /*
+    This class represents a range of objects.
+    */
     class range
     {
         private:
-        T _start;
-        T _end;
+        T _start; //The start of the range.
+        T _end; //The end of the range.
 
         public:
-
-        range(T _sta, T _finish) : _start(_sta), _end(_finish) {
+        /*
+        A copy constructor.
+        */
+        range(T start, T end) : _start(start), _end(end)
+        {
 
         }
 
-        ~range(){
+        /*
+        A disconstructor.
+        */
+        ~range()
+        {
 
         }
 
+        /*
+        This class represents a iterator.
+        */
         class iterator
         {
             private:
-            T data;
+            T dataPtr; //Pointer to the data.
 
             public:
-            iterator(T ptr) : data(ptr) {
+            /*
+            A copy constructor.
+            */
+            iterator(T ptr) : dataPtr(ptr)
+            {
 
             }
 
-            T operator*() const {
-			    return data;
+            /*
+            For operator *:
+            */
+            T operator*() const
+            {
+			    return dataPtr;
             }
 
-            iterator& operator++() {
-                ++data;
+            /*
+            For operator ++:
+            */
+            iterator& operator++()
+            {
+                ++dataPtr;
 			    return *this;
             }
 
-		    bool operator==(const iterator& rhs) const {
-			    return (data == rhs.data);
+            /*
+            For operator ==:
+            */
+		    bool operator==(const iterator& rhs) const
+            {
+			    return (dataPtr == rhs.dataPtr);
 		    }
 
-		    bool operator!=(const iterator& rhs) const {
-			    return (data != rhs.data);
+            /*
+            For operator !=:
+            */
+		    bool operator!=(const iterator& rhs) const
+            {
+			    return (dataPtr != rhs.dataPtr);
             }
         };
 
         public:
-
-        iterator begin() {
+        /*
+        Iterator for the start.
+        */
+        iterator begin()
+        {
 		    return iterator(_start);
 	    }
-	
-	    iterator end() {
+
+        /*
+        Iterator for the end.
+        */
+	    iterator end()
+        {
 		    return iterator(_end);
         }
-
     };
 }
