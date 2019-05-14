@@ -32,7 +32,7 @@ namespace itertools
         }
 
         /*
-        This class represents a iterator.
+        This class represents an iterator.
         */
         class iterator
         {
@@ -84,7 +84,7 @@ namespace itertools
 
         public:
         /*
-        Iterator for the start.
+        This function returns the start of the range.
         */
         iterator begin()
         {
@@ -92,7 +92,7 @@ namespace itertools
 	    }
 
         /*
-        Iterator for the end.
+        This function returns the end of the range.
         */
 	    iterator end()
         {

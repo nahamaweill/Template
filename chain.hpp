@@ -5,13 +5,13 @@ namespace itertools
     template <typename T1, typename T2>
 
     /*
-    This class represents A chaun of two containers-like.
+    This class represents A chain of two containers-like.
     */
     class chain 
     {
         private:
-        T1 _it1; //For the start.
-        T2 _it2; //For the end.
+        T1 _it1; //Container 1.
+        T2 _it2; //Container 2.
         
         public:
         /*
@@ -25,13 +25,13 @@ namespace itertools
         template <typename P1, typename P2>
 
         /*
-        This class represents a iterator.
+        This class represents an iterator.
         */
         class iterator
         {
           private:
-            P1 data1; //Pointer to the data of the first range.
-            P2 data2; //Pointer to the data of the second range.
+            P1 data1; //Pointer to the data of the first container.
+            P2 data2; //Pointer to the data of the second container.
 
             public:
             /*
@@ -42,6 +42,9 @@ namespace itertools
 
             }
 
+            /*
+            For operator *:
+            */
             decltype(*data1) operator*() const
             {
 			    return *data1;
@@ -73,15 +76,20 @@ namespace itertools
         };
 
         public:
-
+        /*
+        This function returns the start of the chain.
+        */
         auto begin()
         {
-            return iterator <decltype(_it1.begin()),decltype(_it2.begin())> (_it1.begin(), _it2.begin());;
+            return iterator <decltype(_it1.begin()), decltype(_it2.begin())> (_it1.begin(), _it2.begin());
         }
 
+        /*
+        This function returns the end of the chain.
+        */
         auto end()
         {
-            return iterator <decltype(_it1.end()),decltype(_it2.end())> (_it1.end(), _it2.end());;
+            return iterator <decltype(_it1.end()), decltype(_it2.end())> (_it1.end(), _it2.end());
         }
 
     };
