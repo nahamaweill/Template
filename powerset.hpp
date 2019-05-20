@@ -1,4 +1,5 @@
 #pragma once
+#include <cmath>
 
 namespace itertools
 {
@@ -30,14 +31,23 @@ namespace itertools
             private:
             P data1; //Pointer to the start data of the container.
             P data2; //Pointer to the end data of the container.
+            unsigned size;
+            unsigned size_group;
+
 
             public:
             /*
             A copy constructor.
             */
-            iterator(P ptr1, P ptr2) : data1(ptr1), data2(ptr2)
+            iterator(P ptr1, P ptr2) : data1(ptr1), data2(ptr2), size(1), size_group(0)
             {
+                while (data1 != data2) //Counting how many elements.                {
+                    size++;
+                    data1++;
+                }
+                data1 = ptr1;
 
+                size_group = std::pow(2, size); //Calculating how many groups.
             }
 
             /*
