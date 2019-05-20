@@ -32,12 +32,13 @@ namespace itertools
             private:
             P1 data1; //Pointer to the data of the first container.
             P2 data2; //Pointer to the data of the second container.
+            P2 begin2; //Save the begin of the second iterator.
 
             public:
             /*
             A copy constructor.
             */
-            iterator(P1 ptr1, P2 ptr2) : data1(ptr1), data2(ptr2)
+            iterator(P1 ptr1, P2 ptr2) : data1(ptr1), data2(ptr2), begin2(ptr2)
             {
 
             }
@@ -55,23 +56,21 @@ namespace itertools
             */
             iterator<P1, P2>& operator++()
             {
+                ++data2; //Advance the second iterator.
 			    return *this;
             }
 
             /*
-            For operator ==:
-            */
-		    bool operator==(iterator<P1,P2> it) const
-            {
-			    return false;
-		    }
-
-            /*
             For operator !=:
             */
-		    bool operator!=(iterator<P1,P2> it) const
+		    bool operator!=(iterator<P1,P2> it)
             {
-			    return false;
+                if (!(data2 != it.data2)) //Check if it's the end of the second word.
+                {
+                    ++data1; //Advance the first iterator.
+                    data2 = begin2; //Place the second iterator at the beginning of the second word.
+                }
+			    return (data1 != it.data1); //Check if it's end of the first word.
             }
         };
 
@@ -79,7 +78,7 @@ namespace itertools
         /*
         This function returns the start of the product.
         */
-        auto begin()
+        auto begin() const
         {
             return iterator <decltype(_it1.begin()), decltype(_it2.begin())> (_it1.begin(), _it2.begin());
         }
@@ -87,7 +86,7 @@ namespace itertools
         /*
         This function returns the end of the product.
         */
-        auto end()
+        auto end() const
         {
             return iterator <decltype(_it1.end()), decltype(_it2.end())> (_it1.end(), _it2.end());
         }

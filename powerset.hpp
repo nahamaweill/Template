@@ -57,14 +57,6 @@ namespace itertools
             }
 
             /*
-            For operator ==:
-            */
-		    bool operator==(iterator<P> it) const
-            {
-			    return false;
-		    }
-
-            /*
             For operator !=:
             */
 		    bool operator!=(iterator<P> it) const
@@ -78,7 +70,7 @@ namespace itertools
         /*
         This function returns the start of the powerset.
         */
-        auto begin()
+        auto begin() const
         { 
             return iterator<decltype(_start.begin())> (_start.begin(), _start.end());
         }
@@ -86,7 +78,7 @@ namespace itertools
         /*
         This function returns the end of the powerset.
         */
-        auto end() 
+        auto end() const
         { 
             return iterator<decltype(_start.begin())>(_start.end(), _start.end());
         } 

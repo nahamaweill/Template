@@ -56,23 +56,17 @@ namespace itertools
             */
             iterator<P1, P2>& operator++()
             {
+                ++data1; //Advance the first iterator.
+                ++data2; //Advance the second iterator.
 			    return *this;
-            }
-
-            /*
-            For operator ==:
-            */
-		    bool operator==(iterator<P1,P2> it) const
-            {
-			    return false;
             }
 
             /*
             For operator !=:
             */
-		    bool operator!=(iterator<P1,P2> it) const
+		    bool operator!=(iterator<P1,P2> it)
             {
-			    return false;
+			    return (data1 != it.data1); //Check if one of the iterators reached the end.
             }
         };
 
@@ -81,7 +75,7 @@ namespace itertools
         /*
         This function returns the start of the zip.
         */
-        auto begin()
+        auto begin() const
         {
             return iterator <decltype(_it1.begin()), decltype(_it2.begin())> (_it1.begin(), _it2.begin());
         }
@@ -89,7 +83,7 @@ namespace itertools
         /*
         This function returns the end of the zip.
         */
-        auto end()
+        auto end() const
         {
             return iterator <decltype(_it1.end()), decltype(_it2.end())> (_it1.end(), _it2.end());
         }

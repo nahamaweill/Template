@@ -76,7 +76,7 @@ namespace itertools
             /*
             For operator !=:
             */
-		    bool operator!=(const iterator& rhs) const
+		    bool operator!=(const iterator& rhs)
             {
 			    return (dataPtr != rhs.dataPtr);
             }
@@ -86,7 +86,7 @@ namespace itertools
         /*
         This function returns the start of the range.
         */
-        iterator begin()
+        iterator begin() const
         {
 		    return iterator(_start);
 	    }
@@ -94,7 +94,7 @@ namespace itertools
         /*
         This function returns the end of the range.
         */
-	    iterator end()
+	    iterator end() const
         {
 		    return iterator(_end);
         }
