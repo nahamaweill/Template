@@ -70,7 +70,7 @@ namespace itertools
                     ++data1; //Advance the first iterator.
                     data2 = begin2; //Place the second iterator at the beginning of the second word.
                 }
-			    return (data1 != it.data1); //Check if it's end of the first word.
+			    return ((data1 != it.data1) && (data2 != it.data2)); //Check if it's end of the first word.
             }
         };
 
